@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CalculaFácil - Calculadoras gratis online</title>
+  <meta name="description" content="Calculadoras gratis online de porcentajes, IVA y mucho más. Rápidas, sencillas y fáciles de usar.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --background: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --success: #087443;
+    }
+
+    body.dark {
+      --background: #101828;
+      --card: #182230;
+      --text: #f2f4f7;
+      --muted: #98a2b3;
+      --border: #344054;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      transition: 0.2s;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    .search {
+      max-width: 600px;
+      margin: 28px auto 0;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: var(--primary);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .ad-space {
+      min-height: 90px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      margin: 25px 0 45px;
+      font-size: 13px;
+    }
+
+    .section-title {
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .calculators {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .calculator-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    }
+
+    .calculator-card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .calculator-card > p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 12px 0 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .calc-btn {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .calc-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .result {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 9px;
+      background: #ecfdf3;
+      color: var(--success);
+      font-weight: 700;
+      display: none;
+    }
+
+    body.dark .result {
+      background: #063b25;
+      color: #6ce9a6;
+    }
+
+    .info {
+      margin-top: 55px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .info h2 {
+      margin-bottom: 12px;
+    }
+
+    .info p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      margin: 0 8px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .calculators {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .calculators {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="logo">CalculaFácil</a>
+
+    <nav>
+      <a href="#calculadoras">Calculadoras</a>
+      <a href="#informacion">Cómo funciona</a>
+      <button class="theme-btn" onclick="toggleDarkMode()">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Calculadoras <span>gratis</span> online</h1>
+
+  <p>
+    Calcula porcentajes, IVA y mucho más de forma rápida,
+    sencilla y totalmente gratis.
+  </p>
+
+  <div class="search">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="🔎 Buscar una calculadora..."
+      oninput="searchCalculators()"
+    >
+  </div>
+</section>
+
+<main>
+
+  <div class="ad-space">
+    Espacio publicitario
+  </div>
+
+  <section id="calculadoras">
+
+    <h2 class="section-title">Calculadoras populares</h2>
+
+    <div class="calculators">
+
+      <!-- PORCENTAJES -->
+      <div class="calculator-card" data-name="porcentaje porcentajes">
+        <h3>📊 Porcentajes</h3>
+
+        <p>
+          Calcula qué porcentaje representa una cantidad respecto a otra.
+        </p>
+
+        <label for="percentagePart">Cantidad</label>
+        <input type="number" id="percentagePart" placeholder="Ej. 25">
+
+        <label for="percentageTotal">Total</label>
+        <input type="number" id="percentageTotal" placeholder="Ej. 100">
+
+        <button class="calc-btn" onclick="calculatePercentage()">
+          Calcular
+        </button>
+
+        <div class="result" id="percentageResult"></div>
+      </div>
+
+      <!-- IVA -->
+      <div class="calculator-card" data-name="iva impuestos precio">
+        <h3>💶 Calculadora de IVA</h3>
+
+        <p>
+          Añade o quita el IVA de un precio fácilmente.
+        </p>
+
+        <label for="ivaPrice">Precio</label>
+        <input type="number" id="ivaPrice" placeholder="Ej. 100">
+
+        <label for="ivaRate">IVA</label>
+        <select id="ivaRate">
+          <option value="21">21%</option>
+          <option value="10">10%</option>
+          <option value="4">4%</option>
+        </select>
+
+        <button class="calc-btn" onclick="calculateIVA()">
+          Calcular
+        </button>
+
+        <div class="result" id="ivaResult"></div>
+      </div>
+
+      <!-- PRÓXIMA -->
+      <div class="calculator-card" data-name="descuentos descuento">
+        <h3>🏷️ Descuentos</h3>
+
+        <p>
+          Calcula cuánto pagarás después de aplicar un descuento.
+        </p>
+
+        <label for="discountPrice">Precio</label>
+        <input type="number" id="discountPrice" placeholder="Ej. 80">
+
+        <label for="discountPercent">Descuento (%)</label>
+        <input type="number" id="discountPercent" placeholder="Ej. 20">
+
+        <button class="calc-btn" onclick="calculateDiscount()">
+          Calcular
+        </button>
+
+        <div class="result" id="discountResult"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="informacion" class="info">
+
+    <h2>Calculadoras online fáciles de usar</h2>
+
+    <p>
+      CalculaFácil es un proyecto creado para ofrecer herramientas
+      gratuitas que permitan realizar cálculos de forma rápida y sencilla.
+    </p>
+
+    <p>
+      Nuestra intención es ir incorporando nuevas calculadoras para
+      ayudarte con operaciones matemáticas, dinero, hogar, vehículos,
+      fechas y muchas otras situaciones del día a día.
+    </p>
+
+    <p>
+      Todas nuestras herramientas están diseñadas para funcionar
+      directamente desde el navegador, sin necesidad de instalar
+      ningún programa.
+    </p>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+
+    <div>© 2026 CalculaFácil</div>
+
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Contacto</a>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+
+  function calculatePercentage() {
+
+    const part = parseFloat(
+      document.getElementById("percentagePart").value
+    );
+
+    const total = parseFloat(
+      document.getElementById("percentageTotal").value
+    );
+
+    const result = document.getElementById("percentageResult");
+
+    if (isNaN(part) || isNaN(total) || total === 0) {
+      result.style.display = "block";
+      result.textContent = "Introduce cantidades válidas.";
+      return;
+    }
+
+    const percentage = (part / total) * 100;
+
+    result.style.display = "block";
+    result.textContent =
+      part + " representa el " + percentage.toFixed(2) + "% de " + total;
+  }
+
+
+  function calculateIVA() {
+
+    const price = parseFloat(
+      document.getElementById("ivaPrice").value
+    );
+
+    const rate = parseFloat(
+      document.getElementById("ivaRate").value
+    );
+
+    const result = document.getElementById("ivaResult");
+
+    if (isNaN(price) || price < 0) {
+      result.style.display = "block";
+      result.textContent = "Introduce un precio válido.";
+      return;
+    }
+
+    const iva = price * rate / 100;
+    const total = price + iva;
+
+    result.style.display = "block";
+
+    result.innerHTML =
+      "IVA: " + iva.toFixed(2) + " €<br>" +
+      "Total: " + total.toFixed(2) + " €";
+  }
+
+
+  function calculateDiscount() {
+
+    const price = parseFloat(
+      document.getElementById("discountPrice").value
+    );
+
+    const discount = parseFloat(
+      document.getElementById("discountPercent").value
+    );
+
+    const result = document.getElementById("discountResult");
+
+    if (
+      isNaN(price) ||
+      isNaN(discount) ||
+      price < 0 ||
+      discount < 0 ||
+      discount > 100
+    ) {
+      result.style.display = "block";
+      result.textContent = "Introduce valores válidos.";
+      return;
+    }
+
+    const saving = price * discount / 100;
+    const finalPrice = price - saving;
+
+    result.style.display = "block";
+
+    result.innerHTML =
+      "Ahorras: " + saving.toFixed(2) + " €<br>" +
+      "Precio final: " + finalPrice.toFixed(2) + " €";
+  }
+
+
+  function searchCalculators() {
+
+    const search = document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
+
+    const cards = document.querySelectorAll(".calculator-card");
+
+    cards.forEach(card => {
+
+      const name = card.dataset.name;
+
+      if (name.includes(search)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+  }
+
+
+  function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    const dark = document.body.classList.contains("dark");
+
+    localStorage.setItem("darkMode", dark);
+  }
+
+
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+  }
+
+</script>
+
+</body>
+</html>
