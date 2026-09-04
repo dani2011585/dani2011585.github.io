@@ -1,0 +1,8 @@
+INSTRUCCIONES
+1. Sube estos archivos a la misma carpeta de GitHub Pages que index.html.
+2. En index.html cambia cada tarjeta para que su título/enlace apunte a la página individual correspondiente:
+   porcentajes.html, descuentos.html, iva.html, propinas.html, edad.html,
+   regla-de-tres.html, media.html, prestamo.html, imc.html, convertidor-km-millas.html
+3. Sustituye [NOMBRE O TITULAR DEL SITIO], [TU EMAIL] y [DATOS QUE CORRESPONDAN] por datos reales.
+4. No publiques datos legales inventados. Si no sabes qué datos corresponden, consulta a un adulto responsable/profesional.
+5. Antes de volver a solicitar AdSense, comprueba todos los enlaces, el contacto, la navegación móvil, la política de privacidad/cookies y el motivo exacto del rechazo.

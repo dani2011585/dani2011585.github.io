@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de IVA | CalculaFácil</title>
+<meta name="description" content="Calcula el importe del IVA y el precio total con IVA para los tipos habituales.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://dani2011585.github.io/calculadora-de-iva.html">
+<style>
+:root{--primary:#2563eb;--primary-dark:#1d4ed8;--dark:#0f172a;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}.nav{max-width:1100px;margin:auto;min-height:70px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}.logo{font-size:1.45rem;font-weight:800;color:var(--primary)}.logo span{color:var(--dark)}
+nav{display:flex;gap:20px}nav a{font-weight:600;color:#475569}nav a:hover{color:var(--primary)}
+main{max-width:900px;margin:auto;padding:55px 20px}.hero{text-align:center;margin-bottom:35px}.hero h1{font-size:clamp(2rem,5vw,3rem);color:var(--dark);margin-bottom:12px}.hero p{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px;box-shadow:0 10px 30px rgba(15,23,42,.07);margin-bottom:25px}
+.card h2{color:var(--dark);margin-bottom:12px}.card h3{color:var(--dark);margin:22px 0 8px}.card p,.card li{color:#475569}.card ul{padding-left:22px}
+label{display:block;font-weight:700;margin:14px 0 6px}input,select{width:100%;padding:13px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit}
+button{width:100%;margin-top:18px;padding:14px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:700;cursor:pointer}button:hover{background:var(--primary-dark)}
+.result{margin-top:18px;padding:16px;border-radius:10px;background:#eff6ff;color:var(--primary-dark);font-weight:700;min-height:50px}
+.back{display:inline-block;margin-bottom:20px;color:var(--primary);font-weight:700}
+footer{background:var(--dark);color:#cbd5e1;margin-top:40px;padding:35px 20px}.footer{max-width:1100px;margin:auto}.footer a{margin-right:18px;color:#cbd5e1}.footer a:hover{color:#fff}.small{font-size:.9rem;color:#94a3b8;margin-top:15px}
+@media(max-width:700px){nav{display:none}.card{padding:22px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="index.html">Calcula<span>Fácil</span></a>
+<nav><a href="index.html#calculadoras">Calculadoras</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="index.html#faq">FAQ</a><a href="index.html#contacto">Contacto</a></nav></div></header>
+<main><a class="back" href="index.html#calculadoras">← Volver a calculadoras</a><div class="hero"><h1>Calculadora de IVA</h1><p>Calcula el IVA añadido a un precio.</p></div>
+<div class="card"><label for="p">Precio antes de IVA (€)</label><input id="p" type="number" step="any"><label for="i">Tipo de IVA</label><select id="i"><option value="21">21 %</option><option value="10">10 %</option><option value="4">4 %</option></select><button onclick="calc()">Calcular IVA</button><div class="result" id="r">Resultado:</div></div>
+<div class="card"><h2>¿Qué hace esta calculadora?</h2><p>Aplica el porcentaje de IVA seleccionado al precio indicado y muestra el importe del impuesto y el total resultante.</p><h3>Nota</h3><p>Los tipos de IVA pueden depender del producto, servicio y normativa aplicable. Comprueba siempre la información fiscal oficial cuando el cálculo tenga consecuencias tributarias.</p></div>
+<script>function calc(){let p=+document.getElementById('p').value,i=+document.getElementById('i').value;if(!isFinite(p)||p<0)return r.textContent='Introduce un precio válido.';let x=p*i/100;r.innerHTML='IVA: '+x.toLocaleString('es-ES',{maximumFractionDigits:2})+' €<br>Total: '+(p+x).toLocaleString('es-ES',{maximumFractionDigits:2})+' €'}</script></main>
+<footer><div class="footer"><a href="index.html">Inicio</a><a href="privacidad.html">Privacidad</a><a href="aviso-legal.html">Aviso legal</a><a href="cookies.html">Cookies</a><p class="small">© 2026 CalculaFácil. Todos los derechos reservados.</p></div></footer>
+</body></html>
