@@ -1,2297 +1,1893 @@
-
 <!DOCTYPE html>
 <html lang="es">
-<head><script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1920689045418501"
-    crossorigin="anonymous"></script></head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>CalculaFácil | Calculadoras gratis online</title>
-
-  <meta
-    name="description"
-    content="CalculaFácil ofrece calculadoras online gratuitas para porcentajes, IVA, descuentos, regla de tres, propinas, edad, promedios, intereses y metabolismo basal."
-  >
-
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#2563eb">
-
-  <style>
-    /* =========================================================
-       RESET Y VARIABLES
-    ========================================================= */
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #eff6ff;
-
-      --background: #f5f7fb;
-      --card: #ffffff;
-
-      --text: #172033;
-      --muted: #667085;
-
-      --border: #e4e7ec;
-
-      --success-bg: #ecfdf3;
-      --success-text: #087443;
-
-      --error-bg: #fef3f2;
-      --error-text: #b42318;
-
-      --shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
-      --radius: 16px;
-    }
-
-    body.dark {
-      --background: #101828;
-      --card: #182230;
-
-      --text: #f2f4f7;
-      --muted: #98a2b3;
-
-      --border: #344054;
-
-      --primary-light: #172554;
-
-      --success-bg: #063b25;
-      --success-text: #6ce9a6;
-
-      --error-bg: #451a17;
-      --error-text: #fda29b;
-
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-
-      transition:
-        background 0.2s ease,
-        color 0.2s ease;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* =========================================================
-       CABECERA
-    ========================================================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-
-      background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid var(--border);
-
-      backdrop-filter: blur(12px);
-    }
-
-    body.dark header {
-      background: rgba(24, 34, 48, 0.94);
-    }
-
-    .nav {
-      width: min(1100px, calc(100% - 40px));
-      min-height: 72px;
-      margin: 0 auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      color: var(--primary);
-      text-decoration: none;
-
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      color: var(--text);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-
-      font-size: 14px;
-      font-weight: 600;
-
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    .theme-btn {
-      width: 40px;
-      height: 40px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px solid var(--border);
-      border-radius: 10px;
-
-      background: var(--card);
-      color: var(--text);
-
-      transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    .theme-btn:hover {
-      border-color: var(--primary);
-      transform: translateY(-1px);
-    }
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
-    .hero {
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
-
-      padding: 75px 0 45px;
-
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-
-      margin-bottom: 18px;
-      padding: 7px 13px;
-
-      border: 1px solid #bfdbfe;
-      border-radius: 999px;
-
-      background: var(--primary-light);
-      color: var(--primary);
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      max-width: 850px;
-      margin: 0 auto 18px;
-
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.1;
-
-      letter-spacing: -1.5px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      max-width: 720px;
-      margin: 0 auto;
-
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    /* =========================================================
-       BUSCADOR
-    ========================================================= */
-
-    .search {
-      max-width: 650px;
-      margin: 30px auto 0;
-    }
-
-    .search-wrapper {
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      font-size: 18px;
-      pointer-events: none;
-    }
-
-    .search input {
-      width: 100%;
-
-      padding: 15px 18px 15px 47px;
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      background: var(--card);
-      color: var(--text);
-
-      font-size: 16px;
-
-      outline: none;
-
-      box-shadow: var(--shadow);
-
-      transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .search input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-    }
-
-    /* =========================================================
-       CONTENIDO PRINCIPAL
-    ========================================================= */
-
-    main {
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* =========================================================
-       ESPACIO PUBLICITARIO
-    ========================================================= */
-
-    .ad-space {
-      min-height: 90px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin: 10px 0 55px;
-
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    /* =========================================================
-       SECCIÓN CALCULADORAS
-    ========================================================= */
-
-    .section-heading {
-      margin-bottom: 25px;
-    }
-
-    .section-title {
-      margin-bottom: 6px;
-
-      font-size: 30px;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .calculators {
-      display: grid;
-
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-
-      gap: 22px;
-    }
-
-    /* =========================================================
-       TARJETAS
-    ========================================================= */
-
-    .calculator-card {
-      background: var(--card);
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      padding: 25px;
-
-      box-shadow: var(--shadow);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .calculator-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(37, 99, 235, 0.3);
-      box-shadow: 0 12px 35px rgba(16, 24, 40, 0.09);
-    }
-
-    .calculator-icon {
-      width: 46px;
-      height: 46px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-bottom: 16px;
-
-      border-radius: 12px;
-
-      background: var(--primary-light);
-
-      font-size: 22px;
-    }
-
-    .calculator-card h3 {
-      margin-bottom: 8px;
-
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    .calculator-card > p {
-      min-height: 45px;
-
-      margin-bottom: 20px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-    }
-
-    /* =========================================================
-       FORMULARIOS
-    ========================================================= */
-
-    label {
-      display: block;
-
-      margin: 13px 0 6px;
-
-      color: var(--text);
-
-      font-size: 14px;
-      font-weight: 650;
-    }
-
-    input,
-    select {
-      width: 100%;
-
-      padding: 11px 12px;
-
-      border: 1px solid var(--border);
-      border-radius: 9px;
-
-      background: var(--card);
-      color: var(--text);
-
-      font-size: 15px;
-
-      outline: none;
-
-      transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    input:focus,
-    select:focus {
-      border-color: var(--primary);
-
-      box-shadow:
-        0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    input::placeholder {
-      color: var(--muted);
-      opacity: 0.8;
-    }
-
-    .calc-btn {
-      width: 100%;
-
-      margin-top: 17px;
-      padding: 12px 16px;
-
-      border: none;
-      border-radius: 9px;
-
-      background: var(--primary);
-      color: #ffffff;
-
-      font-size: 15px;
-      font-weight: 700;
-
-      transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    .calc-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-
-    .calc-btn:active {
-      transform: translateY(0);
-    }
-
-    /* =========================================================
-       RESULTADOS
-    ========================================================= */
-
-    .result {
-      display: none;
-
-      margin-top: 16px;
-      padding: 14px;
-
-      border-radius: 9px;
-
-      background: var(--success-bg);
-      color: var(--success-text);
-
-      font-size: 14px;
-      font-weight: 700;
-
-      line-height: 1.6;
-    }
-
-    .result.error {
-      background: var(--error-bg);
-      color: var(--error-text);
-    }
-
-    .result strong {
-      font-size: 17px;
-    }
-
-    /* =========================================================
-       INFORMACIÓN
-    ========================================================= */
-
-    .info {
-      margin-top: 60px;
-
-      padding: 32px;
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      box-shadow: var(--shadow);
-    }
-
-    .info h2 {
-      margin-bottom: 15px;
-
-      font-size: 27px;
-      line-height: 1.25;
-    }
-
-    .info h3 {
-      margin: 25px 0 8px;
-
-      font-size: 19px;
-    }
-
-    .info p {
-      margin-bottom: 13px;
-
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .info ul {
-      margin: 10px 0 15px 20px;
-      color: var(--muted);
-    }
-
-    .info li {
-      margin-bottom: 7px;
-    }
-
-    .notice {
-      margin-top: 20px;
-      padding: 15px;
-
-      border-left: 4px solid var(--primary);
-      border-radius: 8px;
-
-      background: var(--primary-light);
-      color: var(--text);
-
-      font-size: 14px;
-    }
-
-    /* =========================================================
-       SIN RESULTADOS EN BUSCADOR
-    ========================================================= */
-
-    .no-results {
-      display: none;
-
-      grid-column: 1 / -1;
-
-      padding: 35px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background: var(--card);
-
-      text-align: center;
-      color: var(--muted);
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer {
-      margin-top: 70px;
-
-      border-top: 1px solid var(--border);
-
-      background: var(--card);
-    }
-
-    .footer-content {
-      width: min(1100px, calc(100% - 40px));
-
-      margin: 0 auto;
-
-      padding: 32px 0;
-
-      text-align: center;
-
-      color: var(--muted);
-
-      font-size: 14px;
-    }
-
-    .footer-brand {
-      margin-bottom: 8px;
-
-      color: var(--text);
-
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .footer-links {
-      display: flex;
-
-      justify-content: center;
-      flex-wrap: wrap;
-
-      gap: 16px;
-
-      margin-top: 13px;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-
-      transition: color 0.2s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media (max-width: 950px) {
-
-      .calculators {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-    }
-
-    @media (max-width: 650px) {
-
-      .nav {
-        min-height: 64px;
-      }
-
-      nav {
-        gap: 10px;
-      }
-
-      nav a {
-        display: none;
-      }
-
-      .hero {
-        padding: 52px 0 35px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .calculators {
-        grid-template-columns: 1fr;
-      }
-
-      .calculator-card > p {
-        min-height: auto;
-      }
-
-      .info {
-        padding: 24px;
-      }
-
-      .section-title {
-        font-size: 26px;
-      }
-
-    }
-
-    /* =========================================================
-       ACCESIBILIDAD
-    ========================================================= */
-
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-      }
-
-    }
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CalculaFácil | Calculadoras online gratis</title>
+
+    <meta name="description"
+          content="CalculaFácil ofrece calculadoras online gratuitas y fáciles de usar para porcentajes, descuentos, IVA, propinas, edad, tiempo, préstamos y mucho más.">
+
+    <meta name="keywords"
+          content="calculadora online, calculadora gratis, calculadora porcentaje, calculadora IVA, calculadora descuento, calculadora edad, calculadora préstamo">
+
+    <meta name="author" content="CalculaFácil">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://dani2011585.github.io/">
+
+    <style>
+
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --background: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --success: #15803d;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: auto;
+            min-height: 72px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+            padding: 75px 20px 65px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .search-box {
+            max-width: 620px;
+            margin: 32px auto 0;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            outline: none;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        /* =========================
+           CALCULATORS GRID
+        ========================= */
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .calculator {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .calculator:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.11);
+        }
+
+        .calculator h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .calculator-description {
+            color: var(--muted);
+            font-size: 0.94rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            outline: none;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .result {
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #eff6ff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            min-height: 50px;
+        }
+
+        /* =========================
+           INFORMATION
+        ========================= */
+
+        .info-section {
+            margin-top: 70px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-section h2 {
+            color: var(--secondary);
+            margin-bottom: 18px;
+        }
+
+        .info-section h3 {
+            margin-top: 28px;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+
+        .info-section p {
+            color: #475569;
+            margin-bottom: 14px;
+        }
+
+        .info-section ul {
+            padding-left: 22px;
+            color: #475569;
+        }
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            margin-top: 70px;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            margin-top: 70px;
+            text-align: center;
+            background: #eff6ff;
+            padding: 45px 25px;
+            border-radius: var(--radius);
+        }
+
+        .contact h2 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-email {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: var(--secondary);
+            color: #cbd5e1;
+            padding: 45px 20px;
+            margin-top: 30px;
+        }
+
+        .footer-content {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        footer a {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 0.9rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1150px;
+            margin: 35px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero {
+                padding: 55px 15px;
+            }
+
+            main {
+                padding: 45px 15px;
+            }
+
+            .calculator {
+                padding: 22px;
+            }
+
+            .section-title {
+                font-size: 1.65rem;
+            }
+        }
+
+    </style>
+
+    <!-- Datos estructurados -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CalculaFácil",
+        "url": "https://dani2011585.github.io/",
+        "description": "Calculadoras online gratuitas para realizar cálculos cotidianos de forma sencilla."
+    }
+    </script>
 
-  </style>
 </head>
 
 <body>
 
-  <!-- =======================================================
-       CABECERA
-  ======================================================== -->
-
-  <header>
+<header>
 
     <div class="nav">
 
-      <a href="#" class="logo" aria-label="CalculaFácil - Página principal">
-        Calcula<span>Fácil</span>
-      </a>
-
-      <nav aria-label="Navegación principal">
-
-        <a href="#calculadoras">
-          Calculadoras
+        <a href="#" class="logo">
+            Calcula<span>Fácil</span>
         </a>
 
-        <a href="#informacion">
-          Información
-        </a>
-
-        <button
-          type="button"
-          class="theme-btn"
-          id="themeButton"
-          onclick="toggleDarkMode()"
-          aria-label="Activar modo oscuro"
-          title="Cambiar tema"
-        >
-          🌙
-        </button>
-
-      </nav>
+        <nav>
+            <a href="#calculadoras">Calculadoras</a>
+            <a href="#informacion">Información</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
 
     </div>
 
-  </header>
+</header>
 
 
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
+<section class="hero">
 
-  <section class="hero">
+    <div class="hero-content">
 
-    <div class="hero-badge">
-      ✓ Gratis · Fácil · Sin registros
-    </div>
+        <h1>
+            Calcula cualquier cosa de forma
+            <span>rápida y sencilla</span>
+        </h1>
 
-    <h1>
-      Calculadoras <span>gratis</span> online
-    </h1>
+        <p>
+            Herramientas online gratuitas para ayudarte con cálculos
+            cotidianos. Sin registros y fáciles de utilizar desde
+            ordenador, tablet o móvil.
+        </p>
 
-    <p>
-      Herramientas sencillas para realizar cálculos cotidianos
-      de forma rápida, clara y desde cualquier dispositivo.
-    </p>
+        <div class="search-box">
 
-    <div class="search">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Buscar una calculadora..."
+                aria-label="Buscar calculadora"
+            >
 
-      <div class="search-wrapper">
-
-        <span class="search-icon" aria-hidden="true">
-          🔎
-        </span>
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Buscar una calculadora..."
-          aria-label="Buscar una calculadora"
-          autocomplete="off"
-          oninput="searchCalculators()"
-        >
-
-      </div>
+        </div>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- =======================================================
-       CONTENIDO
-  ======================================================== -->
-
-  <main>
-
-    <!-- Espacio reservado para publicidad -->
-    <div class="ad-space" aria-label="Espacio publicitario">
-      Espacio publicitario
-    </div>
-
-
-    <!-- =====================================================
-         CALCULADORAS
-    ====================================================== -->
+<main>
 
     <section id="calculadoras">
 
-      <div class="section-heading">
-
         <h2 class="section-title">
-          Calculadoras online
+            Calculadoras online
         </h2>
 
         <p class="section-description">
-          Elige una herramienta e introduce los datos para obtener
-          tu resultado al instante.
+            Elige la herramienta que necesitas. Introduce los datos,
+            pulsa calcular y obtén el resultado al instante.
         </p>
 
-      </div>
-
-
-      <div class="calculators" id="calculatorGrid">
-
-
-        <!-- =================================================
-             1. PORCENTAJES
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="porcentaje porcentajes tanto por ciento"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            📊
-          </div>
-
-          <h3>
-            Calculadora de porcentajes
-          </h3>
-
-          <p>
-            Calcula qué porcentaje representa una cantidad respecto a otra.
-          </p>
-
-          <label for="percentagePart">
-            Cantidad
-          </label>
-
-          <input
-            type="number"
-            id="percentagePart"
-            placeholder="Ej. 25"
-            step="any"
-            min="0"
-          >
-
-          <label for="percentageTotal">
-            Total
-          </label>
-
-          <input
-            type="number"
-            id="percentageTotal"
-            placeholder="Ej. 100"
-            step="any"
-            min="0"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculatePercentage()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="percentageResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             2. IVA
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="iva impuesto impuestos precio"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            💶
-          </div>
-
-          <h3>
-            Calculadora de IVA
-          </h3>
-
-          <p>
-            Añade o quita el IVA de un precio de forma sencilla.
-          </p>
-
-          <label for="ivaPrice">
-            Precio
-          </label>
-
-          <input
-            type="number"
-            id="ivaPrice"
-            placeholder="Ej. 100"
-            step="any"
-            min="0"
-          >
-
-          <label for="ivaRate">
-            Tipo de IVA
-          </label>
-
-          <select id="ivaRate">
-            <option value="21">21%</option>
-            <option value="10">10%</option>
-            <option value="4">4%</option>
-          </select>
-
-          <label for="ivaOperation">
-            Operación
-          </label>
-
-          <select id="ivaOperation">
-            <option value="add">Añadir IVA</option>
-            <option value="remove">Quitar IVA</option>
-          </select>
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateIVA()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="ivaResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             3. DESCUENTOS
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="descuento descuentos ofertas rebajas precio final"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            🏷️
-          </div>
-
-          <h3>
-            Calculadora de descuentos
-          </h3>
-
-          <p>
-            Descubre cuánto ahorras y cuál será el precio final.
-          </p>
-
-          <label for="discountPrice">
-            Precio
-          </label>
-
-          <input
-            type="number"
-            id="discountPrice"
-            placeholder="Ej. 80"
-            step="any"
-            min="0"
-          >
-
-          <label for="discountPercent">
-            Descuento (%)
-          </label>
-
-          <input
-            type="number"
-            id="discountPercent"
-            placeholder="Ej. 20"
-            step="any"
-            min="0"
-            max="100"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateDiscount()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="discountResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             4. REGLA DE TRES
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="regla de tres proporciones proporcionalidad matematicas"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            🔢
-          </div>
-
-          <h3>
-            Regla de tres
-          </h3>
-
-          <p>
-            Resuelve operaciones de proporcionalidad de manera rápida.
-          </p>
-
-          <label for="ruleA">
-            A
-          </label>
-
-          <input
-            type="number"
-            id="ruleA"
-            placeholder="Ej. 5"
-            step="any"
-          >
-
-          <label for="ruleB">
-            B
-          </label>
-
-          <input
-            type="number"
-            id="ruleB"
-            placeholder="Ej. 10"
-            step="any"
-          >
-
-          <label for="ruleC">
-            C
-          </label>
-
-          <input
-            type="number"
-            id="ruleC"
-            placeholder="Ej. 8"
-            step="any"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateRuleOfThree()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="ruleResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             5. PROPINA
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="propina propinas restaurante cuenta"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            🍽️
-          </div>
-
-          <h3>
-            Calculadora de propinas
-          </h3>
-
-          <p>
-            Calcula la propina y el importe total de una cuenta.
-          </p>
-
-          <label for="tipBill">
-            Importe de la cuenta
-          </label>
-
-          <input
-            type="number"
-            id="tipBill"
-            placeholder="Ej. 50"
-            step="any"
-            min="0"
-          >
-
-          <label for="tipPercent">
-            Propina (%)
-          </label>
-
-          <input
-            type="number"
-            id="tipPercent"
-            placeholder="Ej. 10"
-            step="any"
-            min="0"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateTip()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="tipResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             6. EDAD
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="edad años nacimiento cumpleaños fecha"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            🎂
-          </div>
-
-          <h3>
-            Calculadora de edad
-          </h3>
-
-          <p>
-            Calcula la edad a partir de una fecha de nacimiento.
-          </p>
-
-          <label for="birthDate">
-            Fecha de nacimiento
-          </label>
-
-          <input
-            type="date"
-            id="birthDate"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateAge()"
-          >
-            Calcular edad
-          </button>
-
-          <div
-            class="result"
-            id="ageResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             7. PROMEDIO
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="promedio media notas media aritmetica matematicas"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            📚
-          </div>
-
-          <h3>
-            Calculadora de promedio
-          </h3>
-
-          <p>
-            Calcula la media aritmética de varias cantidades o notas.
-          </p>
-
-          <label for="averageNumbers">
-            Números
-          </label>
-
-          <input
-            type="text"
-            id="averageNumbers"
-            placeholder="Ej. 7, 8, 9, 6.5"
-            inputmode="decimal"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateAverage()"
-          >
-            Calcular promedio
-          </button>
-
-          <div
-            class="result"
-            id="averageResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             8. INTERÉS SIMPLE
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="interes interés simple dinero ahorro capital financiero"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            💰
-          </div>
-
-          <h3>
-            Interés simple
-          </h3>
-
-          <p>
-            Calcula los intereses generados por un capital inicial.
-          </p>
-
-          <label for="interestCapital">
-            Capital inicial (€)
-          </label>
-
-          <input
-            type="number"
-            id="interestCapital"
-            placeholder="Ej. 1000"
-            step="any"
-            min="0"
-          >
-
-          <label for="interestRate">
-            Interés anual (%)
-          </label>
-
-          <input
-            type="number"
-            id="interestRate"
-            placeholder="Ej. 5"
-            step="any"
-            min="0"
-          >
-
-          <label for="interestYears">
-            Tiempo (años)
-          </label>
-
-          <input
-            type="number"
-            id="interestYears"
-            placeholder="Ej. 3"
-            step="any"
-            min="0"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateSimpleInterest()"
-          >
-            Calcular
-          </button>
-
-          <div
-            class="result"
-            id="interestResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- =================================================
-             9. METABOLISMO BASAL
-        ================================================== -->
-
-        <article
-          class="calculator-card"
-          data-name="metabolismo basal tmb tasa metabolica basal metabolismo calorias salud"
-        >
-
-          <div class="calculator-icon" aria-hidden="true">
-            🔥
-          </div>
-
-          <h3>
-            Metabolismo basal (TMB)
-          </h3>
-
-          <p>
-            Estima la tasa metabólica basal mediante la fórmula
-            de Mifflin-St Jeor.
-          </p>
-
-          <label for="bmrAge">
-            Edad
-          </label>
-
-          <input
-            type="number"
-            id="bmrAge"
-            placeholder="Ej. 25"
-            min="1"
-            max="120"
-            step="1"
-          >
-
-          <label for="bmrSex">
-            Sexo utilizado para la fórmula
-          </label>
-
-          <select id="bmrSex">
-            <option value="male">Hombre</option>
-            <option value="female">Mujer</option>
-          </select>
-
-          <label for="bmrWeight">
-            Peso (kg)
-          </label>
-
-          <input
-            type="number"
-            id="bmrWeight"
-            placeholder="Ej. 70"
-            min="1"
-            max="500"
-            step="any"
-          >
-
-          <label for="bmrHeight">
-            Altura (cm)
-          </label>
-
-          <input
-            type="number"
-            id="bmrHeight"
-            placeholder="Ej. 175"
-            min="50"
-            max="250"
-            step="any"
-          >
-
-          <button
-            type="button"
-            class="calc-btn"
-            onclick="calculateBMR()"
-          >
-            Calcular metabolismo basal
-          </button>
-
-          <div
-            class="result"
-            id="bmrResult"
-            aria-live="polite"
-          ></div>
-
-        </article>
-
-
-        <!-- MENSAJE SIN RESULTADOS -->
-
-        <div
-          class="no-results"
-          id="noResults"
-        >
-          <strong>No hemos encontrado ninguna calculadora.</strong>
-          <br>
-          Prueba con otra palabra, como IVA, porcentaje, edad o descuento.
+
+        <div class="calculator-grid">
+
+
+            <!-- 1 PORCENTAJE -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de porcentajes</h3>
+
+                <p class="calculator-description">
+                    Calcula fácilmente qué porcentaje representa una
+                    cantidad respecto a otra.
+                </p>
+
+                <div class="form-group">
+                    <label for="porcentajeCantidad">
+                        Cantidad
+                    </label>
+
+                    <input
+                        type="number"
+                        id="porcentajeCantidad"
+                        placeholder="Ej. 25"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="porcentajeTotal">
+                        Total
+                    </label>
+
+                    <input
+                        type="number"
+                        id="porcentajeTotal"
+                        placeholder="Ej. 100"
+                    >
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularPorcentaje()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoPorcentaje">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 2 DESCUENTO -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de descuentos</h3>
+
+                <p class="calculator-description">
+                    Averigua cuánto pagarás después de aplicar un
+                    descuento porcentual.
+                </p>
+
+                <div class="form-group">
+                    <label for="precioDescuento">
+                        Precio original (€)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precioDescuento"
+                        placeholder="Ej. 80"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="descuento">
+                        Descuento (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="descuento"
+                        placeholder="Ej. 20"
+                    >
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularDescuento()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoDescuento">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 3 IVA -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de IVA</h3>
+
+                <p class="calculator-description">
+                    Añade o elimina IVA de un precio para conocer
+                    rápidamente su importe antes y después del impuesto.
+                </p>
+
+                <div class="form-group">
+                    <label for="precioIVA">
+                        Precio (€)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precioIVA"
+                        placeholder="Ej. 100"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoIVA">
+                        Tipo de IVA
+                    </label>
+
+                    <select id="tipoIVA">
+                        <option value="21">21%</option>
+                        <option value="10">10%</option>
+                        <option value="4">4%</option>
+                    </select>
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularIVA()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoIVA">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 4 PROPINA -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de propinas</h3>
+
+                <p class="calculator-description">
+                    Calcula una propina y descubre cuánto corresponde
+                    pagar por persona.
+                </p>
+
+                <div class="form-group">
+                    <label for="cuenta">
+                        Importe de la cuenta (€)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cuenta"
+                        placeholder="Ej. 50"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="propina">
+                        Propina (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="propina"
+                        value="10"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="personas">
+                        Número de personas
+                    </label>
+
+                    <input
+                        type="number"
+                        id="personas"
+                        value="1"
+                        min="1"
+                    >
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularPropina()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoPropina">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 5 EDAD -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de edad</h3>
+
+                <p class="calculator-description">
+                    Introduce tu fecha de nacimiento para conocer
+                    tu edad aproximada en años, meses y días.
+                </p>
+
+                <div class="form-group">
+                    <label for="fechaNacimiento">
+                        Fecha de nacimiento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fechaNacimiento"
+                    >
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularEdad()">
+                    Calcular edad
+                </button>
+
+                <div class="result" id="resultadoEdad">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 6 REGLA DE TRES -->
+
+            <article class="calculator">
+
+                <h3>Regla de tres</h3>
+
+                <p class="calculator-description">
+                    Resuelve rápidamente proporciones directas.
+                    Ideal para cálculos escolares y cotidianos.
+                </p>
+
+                <div class="form-group">
+                    <label for="reglaA">
+                        A
+                    </label>
+
+                    <input
+                        type="number"
+                        id="reglaA"
+                        placeholder="Ej. 5"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="reglaB">
+                        B
+                    </label>
+
+                    <input
+                        type="number"
+                        id="reglaB"
+                        placeholder="Ej. 10"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="reglaC">
+                        C
+                    </label>
+
+                    <input
+                        type="number"
+                        id="reglaC"
+                        placeholder="Ej. 20"
+                    >
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularReglaTres()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoRegla">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 7 MEDIA -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de media</h3>
+
+                <p class="calculator-description">
+                    Calcula la media aritmética de varios números.
+                    Separa los valores utilizando comas.
+                </p>
+
+                <div class="form-group">
+
+                    <label for="numerosMedia">
+                        Números
+                    </label>
+
+                    <input
+                        type="text"
+                        id="numerosMedia"
+                        placeholder="Ej. 7, 8, 9, 6"
+                    >
+
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularMedia()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoMedia">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 8 PRÉSTAMO -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de préstamo</h3>
+
+                <p class="calculator-description">
+                    Obtén una estimación de la cuota mensual de un
+                    préstamo utilizando capital, interés y plazo.
+                </p>
+
+                <div class="form-group">
+
+                    <label for="capital">
+                        Capital (€)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="capital"
+                        placeholder="Ej. 10000"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="interes">
+                        Interés anual (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="interes"
+                        placeholder="Ej. 5"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="plazo">
+                        Plazo (años)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="plazo"
+                        placeholder="Ej. 5"
+                    >
+
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularPrestamo()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoPrestamo">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 9 IMC -->
+
+            <article class="calculator">
+
+                <h3>Calculadora de IMC</h3>
+
+                <p class="calculator-description">
+                    Calcula el índice de masa corporal a partir del
+                    peso y la altura. El resultado es únicamente
+                    orientativo.
+                </p>
+
+                <div class="form-group">
+
+                    <label for="peso">
+                        Peso (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="peso"
+                        placeholder="Ej. 70"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="altura">
+                        Altura (cm)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="altura"
+                        placeholder="Ej. 175"
+                    >
+
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="calcularIMC()">
+                    Calcular
+                </button>
+
+                <div class="result" id="resultadoIMC">
+                    Resultado:
+                </div>
+
+            </article>
+
+
+            <!-- 10 CONVERSOR -->
+
+            <article class="calculator">
+
+                <h3>Conversor de kilómetros y millas</h3>
+
+                <p class="calculator-description">
+                    Convierte rápidamente distancias entre kilómetros
+                    y millas.
+                </p>
+
+                <div class="form-group">
+
+                    <label for="distancia">
+                        Distancia
+                    </label>
+
+                    <input
+                        type="number"
+                        id="distancia"
+                        placeholder="Ej. 10"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="unidad">
+
+                        Unidad inicial
+
+                    </label>
+
+                    <select id="unidad">
+
+                        <option value="km">
+                            Kilómetros
+                        </option>
+
+                        <option value="millas">
+                            Millas
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="calculate-btn"
+                        onclick="convertirDistancia()">
+
+                    Convertir
+
+                </button>
+
+                <div class="result" id="resultadoDistancia">
+                    Resultado:
+                </div>
+
+            </article>
+
         </div>
 
-      </div>
+    </section>
+
+
+    <!-- INFORMACIÓN -->
+
+    <section class="info-section" id="informacion">
+
+        <h2>
+            ¿Qué es CalculaFácil?
+        </h2>
+
+        <p>
+            CalculaFácil es una colección de herramientas online
+            diseñada para facilitar pequeños cálculos que aparecen
+            habitualmente en el día a día.
+        </p>
+
+        <p>
+            Nuestro objetivo es que cualquier persona pueda realizar
+            operaciones habituales de forma sencilla, sin necesidad
+            de instalar programas ni crear una cuenta.
+        </p>
+
+        <h3>
+            ¿Cómo funcionan nuestras calculadoras?
+        </h3>
+
+        <p>
+            Cada herramienta utiliza los datos introducidos por el
+            usuario y aplica la fórmula correspondiente para obtener
+            un resultado. Los cálculos se realizan directamente en
+            el navegador.
+        </p>
+
+        <h3>
+            ¿Son gratuitos?
+        </h3>
+
+        <p>
+            Sí. Las calculadoras están diseñadas para poder utilizarse
+            gratuitamente y sin registro.
+        </p>
+
+        <h3>
+            Importante
+        </h3>
+
+        <p>
+            Los resultados proporcionados por estas herramientas tienen
+            carácter informativo y orientativo. En cálculos financieros,
+            fiscales o relacionados con la salud pueden existir
+            circunstancias particulares que hagan necesario consultar
+            información oficial o a un profesional cualificado.
+        </p>
 
     </section>
 
 
-    <!-- =====================================================
-         INFORMACIÓN
-    ====================================================== -->
+    <!-- FAQ -->
 
-    <section
-      id="informacion"
-      class="info"
-    >
+    <section class="faq" id="faq">
 
-      <h2>
-        Calculadoras online fáciles de usar
-      </h2>
+        <h2 class="section-title">
+            Preguntas frecuentes
+        </h2>
 
-      <p>
-        CalculaFácil reúne herramientas gratuitas diseñadas para
-        ayudarte a realizar diferentes cálculos cotidianos de forma
-        rápida y sencilla.
-      </p>
+        <p class="section-description">
+            Algunas dudas habituales sobre nuestras calculadoras.
+        </p>
 
-      <p>
-        Todas las operaciones se realizan directamente en tu navegador,
-        por lo que no necesitas instalar ningún programa para utilizar
-        nuestras calculadoras.
-      </p>
 
-      <h3>
-        ¿Qué puedes calcular?
-      </h3>
+        <div class="faq-item">
 
-      <ul>
-        <li>Porcentajes y proporciones.</li>
-        <li>IVA y precios con impuestos.</li>
-        <li>Descuentos y precios finales.</li>
-        <li>Propinas y totales de cuentas.</li>
-        <li>Edad a partir de una fecha de nacimiento.</li>
-        <li>Promedios y medias aritméticas.</li>
-        <li>Interés simple sobre un capital.</li>
-        <li>Estimación de metabolismo basal (TMB).</li>
-      </ul>
+            <h3>
+                ¿Tengo que registrarme para utilizar las calculadoras?
+            </h3>
 
-      <h3>
-        Calculadora de metabolismo basal
-      </h3>
+            <p>
+                No. Puedes utilizar las herramientas directamente
+                desde la página sin crear una cuenta.
+            </p>
 
-      <p>
-        La Tasa Metabólica Basal (TMB) es una estimación de la energía
-        que el organismo utiliza en reposo. Esta calculadora utiliza
-        la fórmula de Mifflin-St Jeor para realizar una estimación
-        orientativa a partir de la edad, el peso, la altura y el sexo
-        utilizado por dicha fórmula.
-      </p>
+        </div>
 
-      <div class="notice">
-        <strong>Importante:</strong>
-        los resultados de la calculadora de metabolismo basal son
-        estimaciones y no sustituyen una valoración profesional.
-        Las necesidades energéticas reales pueden variar según muchos
-        factores individuales.
-      </div>
 
-      <h3>
-        Resultados orientativos
-      </h3>
+        <div class="faq-item">
 
-      <p>
-        Las calculadoras de esta página están pensadas como herramientas
-        prácticas para obtener resultados aproximados de manera rápida.
-        Comprueba siempre los resultados cuando el cálculo tenga
-        consecuencias económicas, académicas o de otro tipo.
-      </p>
+            <h3>
+                ¿Las calculadoras funcionan desde el móvil?
+            </h3>
+
+            <p>
+                Sí. La página está adaptada para ordenadores,
+                tablets y teléfonos móviles.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                ¿Se guardan los datos que introduzco?
+            </h3>
+
+            <p>
+                Las calculadoras de esta página realizan las
+                operaciones directamente en el navegador y no
+                necesitan almacenar los datos para proporcionar
+                el resultado.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                ¿Puedo confiar en los resultados?
+            </h3>
+
+            <p>
+                Las operaciones matemáticas están diseñadas para
+                ofrecer resultados correctos en las condiciones
+                introducidas. Aun así, algunas calculadoras tienen
+                carácter orientativo y no sustituyen asesoramiento
+                profesional.
+            </p>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <h3>
+                ¿Puedo sugerir una nueva calculadora?
+            </h3>
+
+            <p>
+                Sí. Si necesitas una herramienta que todavía no
+                aparece en la página, puedes ponerte en contacto
+                con nosotros para proponerla.
+            </p>
+
+        </div>
 
     </section>
 
-  </main>
+
+    <!-- CONTACTO -->
+
+    <section class="contact" id="contacto">
+
+        <h2>
+            Contacta con nosotros
+        </h2>
+
+        <p>
+            ¿Has encontrado un problema, tienes una sugerencia o
+            quieres proponer una nueva calculadora? Escríbenos.
+        </p>
+
+        <!-- CAMBIA ESTE EMAIL POR EL TUYO -->
+
+        <a
+            class="contact-email"
+            href="mailto:contacto@tudominio.com">
+
+            contacto@tudominio.com
+
+        </a>
+
+    </section>
+
+</main>
 
 
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
+<!-- FOOTER -->
 
-  <footer>
+<footer>
 
     <div class="footer-content">
 
-      <div class="footer-brand">
-        CalculaFácil
-      </div>
+        <div>
 
-      <div>
-        Calculadoras online gratuitas y fáciles de usar.
-      </div>
+            <h3>
+                CalculaFácil
+            </h3>
 
-      <div class="footer-links">
+            <p>
+                Herramientas y calculadoras online gratuitas
+                para facilitar tus cálculos cotidianos.
+            </p>
 
-        <a href="privacidad.html">
-          Privacidad
-        </a>
+        </div>
 
-        <a href="aviso-legal.html">
-          Aviso legal
-        </a>
 
-        <a href="contacto.html">
-          Contacto
-        </a>
+        <div>
 
-      </div>
+            <h3>
+                Navegación
+            </h3>
 
-      <div style="margin-top: 18px;">
-        © 2026 CalculaFácil. Todos los derechos reservados.
-      </div>
+            <a href="#calculadoras">
+                Calculadoras
+            </a>
+
+            <a href="#informacion">
+                Sobre nosotros
+            </a>
+
+            <a href="#faq">
+                Preguntas frecuentes
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Legal
+            </h3>
+
+            <a href="privacidad.html">
+                Política de privacidad
+            </a>
+
+            <a href="aviso-legal.html">
+                Aviso legal
+            </a>
+
+            <a href="cookies.html">
+                Política de cookies
+            </a>
+
+        </div>
 
     </div>
 
-  </footer>
+
+    <div class="copyright">
+
+        © 2026 CalculaFácil. Todos los derechos reservados.
+
+    </div>
+
+</footer>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
+<script>
 
-  <script>
+    /* =========================
+       FUNCIONES AUXILIARES
+    ========================= */
 
-    /* =======================================================
-       FUNCIONES GENERALES
-    ======================================================== */
+    function numero(id) {
 
-    function showResult(id, message, error = false) {
+        return parseFloat(
+            document.getElementById(id).value
+        );
 
-      const result = document.getElementById(id);
+    }
 
-      result.innerHTML = message;
+    function formato(numero) {
 
-      result.classList.toggle("error", error);
-
-      result.style.display = "block";
+        return new Intl.NumberFormat(
+            "es-ES",
+            {
+                maximumFractionDigits: 2
+            }
+        ).format(numero);
 
     }
 
 
-    function formatNumber(number, decimals = 2) {
+    /* =========================
+       PORCENTAJE
+    ========================= */
 
-      return new Intl.NumberFormat("es-ES", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals
-      }).format(number);
+    function calcularPorcentaje() {
 
-    }
+        const cantidad = numero("porcentajeCantidad");
+        const total = numero("porcentajeTotal");
 
+        if (
+            isNaN(cantidad) ||
+            isNaN(total) ||
+            total === 0
+        ) {
 
-    /* =======================================================
-       1. PORCENTAJES
-    ======================================================== */
+            document.getElementById(
+                "resultadoPorcentaje"
+            ).textContent =
+                "Introduce valores válidos.";
 
-    function calculatePercentage() {
+            return;
 
-      const part = parseFloat(
-        document.getElementById("percentagePart").value
-      );
+        }
 
-      const total = parseFloat(
-        document.getElementById("percentageTotal").value
-      );
+        const resultado =
+            (cantidad / total) * 100;
 
-      if (
-        !Number.isFinite(part) ||
-        !Number.isFinite(total) ||
-        total === 0
-      ) {
-
-        showResult(
-          "percentageResult",
-          "Introduce cantidades válidas y asegúrate de que el total no sea 0.",
-          true
-        );
-
-        return;
-      }
-
-      const percentage = (part / total) * 100;
-
-      showResult(
-        "percentageResult",
-        `${formatNumber(part)} representa el <strong>${formatNumber(percentage)}%</strong> de ${formatNumber(total)}.`
-      );
+        document.getElementById(
+            "resultadoPorcentaje"
+        ).textContent =
+            "Resultado: " + formato(resultado) + "%";
 
     }
 
 
-    /* =======================================================
-       2. IVA
-    ======================================================== */
+    /* =========================
+       DESCUENTO
+    ========================= */
 
-    function calculateIVA() {
+    function calcularDescuento() {
 
-      const price = parseFloat(
-        document.getElementById("ivaPrice").value
-      );
+        const precio = numero("precioDescuento");
+        const descuento = numero("descuento");
 
-      const rate = parseFloat(
-        document.getElementById("ivaRate").value
-      );
+        if (
+            isNaN(precio) ||
+            isNaN(descuento) ||
+            precio < 0
+        ) {
 
-      const operation =
-        document.getElementById("ivaOperation").value;
+            document.getElementById(
+                "resultadoDescuento"
+            ).textContent =
+                "Introduce valores válidos.";
 
-      if (
-        !Number.isFinite(price) ||
-        price < 0
-      ) {
+            return;
 
-        showResult(
-          "ivaResult",
-          "Introduce un precio válido.",
-          true
-        );
+        }
 
-        return;
-      }
+        const ahorro =
+            precio * (descuento / 100);
 
-      if (operation === "add") {
+        const final =
+            precio - ahorro;
 
-        const iva = price * rate / 100;
-
-        const total = price + iva;
-
-        showResult(
-          "ivaResult",
-          `IVA: <strong>${formatNumber(iva)} €</strong><br>
-           Total: <strong>${formatNumber(total)} €</strong>`
-        );
-
-      } else {
-
-        const base = price / (1 + rate / 100);
-
-        const iva = price - base;
-
-        showResult(
-          "ivaResult",
-          `Precio sin IVA: <strong>${formatNumber(base)} €</strong><br>
-           IVA incluido: <strong>${formatNumber(iva)} €</strong>`
-        );
-
-      }
+        document.getElementById(
+            "resultadoDescuento"
+        ).innerHTML =
+            "Ahorras: " + formato(ahorro) +
+            " €<br>Precio final: " +
+            formato(final) + " €";
 
     }
 
 
-    /* =======================================================
-       3. DESCUENTOS
-    ======================================================== */
+    /* =========================
+       IVA
+    ========================= */
 
-    function calculateDiscount() {
+    function calcularIVA() {
 
-      const price = parseFloat(
-        document.getElementById("discountPrice").value
-      );
+        const precio = numero("precioIVA");
+        const iva = numero("tipoIVA");
 
-      const discount = parseFloat(
-        document.getElementById("discountPercent").value
-      );
+        if (
+            isNaN(precio) ||
+            precio < 0
+        ) {
 
-      if (
-        !Number.isFinite(price) ||
-        !Number.isFinite(discount) ||
-        price < 0 ||
-        discount < 0 ||
-        discount > 100
-      ) {
+            document.getElementById(
+                "resultadoIVA"
+            ).textContent =
+                "Introduce un precio válido.";
 
-        showResult(
-          "discountResult",
-          "Introduce un precio válido y un descuento entre 0% y 100%.",
-          true
-        );
+            return;
 
-        return;
-      }
+        }
 
-      const saving =
-        price * discount / 100;
+        const importeIVA =
+            precio * (iva / 100);
 
-      const finalPrice =
-        price - saving;
+        const total =
+            precio + importeIVA;
 
-      showResult(
-        "discountResult",
-        `Ahorras: <strong>${formatNumber(saving)} €</strong><br>
-         Precio final: <strong>${formatNumber(finalPrice)} €</strong>`
-      );
+        const base =
+            precio / (1 + iva / 100);
+
+        document.getElementById(
+            "resultadoIVA"
+        ).innerHTML =
+            "IVA añadido: " +
+            formato(importeIVA) +
+            " €<br>Total con IVA: " +
+            formato(total) +
+            " €";
 
     }
 
 
-    /* =======================================================
-       4. REGLA DE TRES
-    ======================================================== */
+    /* =========================
+       PROPINA
+    ========================= */
 
-    function calculateRuleOfThree() {
+    function calcularPropina() {
 
-      const a = parseFloat(
-        document.getElementById("ruleA").value
-      );
+        const cuenta = numero("cuenta");
+        const propina = numero("propina");
+        const personas = numero("personas");
 
-      const b = parseFloat(
-        document.getElementById("ruleB").value
-      );
+        if (
+            isNaN(cuenta) ||
+            isNaN(propina) ||
+            isNaN(personas) ||
+            personas <= 0
+        ) {
 
-      const c = parseFloat(
-        document.getElementById("ruleC").value
-      );
+            document.getElementById(
+                "resultadoPropina"
+            ).textContent =
+                "Introduce valores válidos.";
 
-      if (
-        !Number.isFinite(a) ||
-        !Number.isFinite(b) ||
-        !Number.isFinite(c) ||
-        a === 0
-      ) {
+            return;
 
-        showResult(
-          "ruleResult",
-          "Introduce valores válidos. A no puede ser 0.",
-          true
-        );
+        }
 
-        return;
-      }
+        const importePropina =
+            cuenta * (propina / 100);
 
-      const x =
-        (b * c) / a;
+        const total =
+            cuenta + importePropina;
 
-      showResult(
-        "ruleResult",
-        `El resultado es: <strong>${formatNumber(x)}</strong>`
-      );
+        const porPersona =
+            total / personas;
 
-    }
-
-
-    /* =======================================================
-       5. PROPINA
-    ======================================================== */
-
-    function calculateTip() {
-
-      const bill = parseFloat(
-        document.getElementById("tipBill").value
-      );
-
-      const percent = parseFloat(
-        document.getElementById("tipPercent").value
-      );
-
-      if (
-        !Number.isFinite(bill) ||
-        !Number.isFinite(percent) ||
-        bill < 0 ||
-        percent < 0
-      ) {
-
-        showResult(
-          "tipResult",
-          "Introduce una cuenta y un porcentaje de propina válidos.",
-          true
-        );
-
-        return;
-      }
-
-      const tip =
-        bill * percent / 100;
-
-      const total =
-        bill + tip;
-
-      showResult(
-        "tipResult",
-        `Propina: <strong>${formatNumber(tip)} €</strong><br>
-         Total: <strong>${formatNumber(total)} €</strong>`
-      );
+        document.getElementById(
+            "resultadoPropina"
+        ).innerHTML =
+            "Propina: " +
+            formato(importePropina) +
+            " €<br>Total: " +
+            formato(total) +
+            " €<br>Por persona: " +
+            formato(porPersona) +
+            " €";
 
     }
 
 
-    /* =======================================================
-       6. EDAD
-    ======================================================== */
+    /* =========================
+       EDAD
+    ========================= */
 
-    function calculateAge() {
+    function calcularEdad() {
 
-      const value =
-        document.getElementById("birthDate").value;
+        const fecha =
+            document.getElementById(
+                "fechaNacimiento"
+            ).value;
 
-      if (!value) {
+        if (!fecha) {
 
-        showResult(
-          "ageResult",
-          "Selecciona una fecha de nacimiento.",
-          true
-        );
+            document.getElementById(
+                "resultadoEdad"
+            ).textContent =
+                "Selecciona una fecha.";
 
-        return;
-      }
+            return;
 
-      const birthDate =
-        new Date(value + "T00:00:00");
+        }
 
-      const today =
-        new Date();
+        const nacimiento =
+            new Date(fecha + "T00:00:00");
 
-      if (
-        Number.isNaN(birthDate.getTime()) ||
-        birthDate > today
-      ) {
+        const hoy = new Date();
 
-        showResult(
-          "ageResult",
-          "Introduce una fecha de nacimiento válida.",
-          true
-        );
+        if (nacimiento > hoy) {
 
-        return;
-      }
+            document.getElementById(
+                "resultadoEdad"
+            ).textContent =
+                "La fecha no puede ser futura.";
 
-      let years =
-        today.getFullYear() -
-        birthDate.getFullYear();
+            return;
 
-      let months =
-        today.getMonth() -
-        birthDate.getMonth();
+        }
 
-      let days =
-        today.getDate() -
-        birthDate.getDate();
+        let años =
+            hoy.getFullYear() -
+            nacimiento.getFullYear();
 
-      if (days < 0) {
+        const mes =
+            hoy.getMonth() -
+            nacimiento.getMonth();
 
-        months--;
+        if (
+            mes < 0 ||
+            (
+                mes === 0 &&
+                hoy.getDate() < nacimiento.getDate()
+            )
+        ) {
 
-        const previousMonth =
-          new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            0
-          );
+            años--;
 
-        days += previousMonth.getDate();
+        }
 
-      }
-
-      if (months < 0) {
-
-        years--;
-        months += 12;
-
-      }
-
-      showResult(
-        "ageResult",
-        `Tienes aproximadamente <strong>${years} años, ${months} meses y ${days} días</strong>.`
-      );
+        document.getElementById(
+            "resultadoEdad"
+        ).textContent =
+            "Edad aproximada: " +
+            años +
+            " años.";
 
     }
 
 
-    /* =======================================================
-       7. PROMEDIO
-    ======================================================== */
+    /* =========================
+       REGLA DE TRES
+    ========================= */
 
-    function calculateAverage() {
+    function calcularReglaTres() {
 
-      const input =
-        document.getElementById("averageNumbers").value.trim();
+        const a = numero("reglaA");
+        const b = numero("reglaB");
+        const c = numero("reglaC");
 
-      if (!input) {
+        if (
+            isNaN(a) ||
+            isNaN(b) ||
+            isNaN(c) ||
+            a === 0
+        ) {
 
-        showResult(
-          "averageResult",
-          "Introduce varios números separados por comas.",
-          true
-        );
+            document.getElementById(
+                "resultadoRegla"
+            ).textContent =
+                "Introduce valores válidos.";
 
-        return;
-      }
+            return;
 
-      /*
-        Aceptamos tanto punto como coma decimal.
+        }
 
-        Ejemplo:
-        7, 8, 9
-        7.5, 8.25, 9
-      */
+        const resultado =
+            (b * c) / a;
 
-      const parts =
-        input.split(",").map(value => value.trim());
-
-      const numbers =
-        parts
-          .map(value => parseFloat(value.replace(",", ".")))
-          .filter(value => Number.isFinite(value));
-
-      if (
-        numbers.length === 0 ||
-        numbers.length !== parts.length
-      ) {
-
-        showResult(
-          "averageResult",
-          "Revisa los números. Escríbelos separados por comas.",
-          true
-        );
-
-        return;
-      }
-
-      const sum =
-        numbers.reduce(
-          (total, number) => total + number,
-          0
-        );
-
-      const average =
-        sum / numbers.length;
-
-      showResult(
-        "averageResult",
-        `El promedio es: <strong>${formatNumber(average)}</strong>`
-      );
+        document.getElementById(
+            "resultadoRegla"
+        ).textContent =
+            "Resultado: " +
+            formato(resultado);
 
     }
 
 
-    /* =======================================================
-       8. INTERÉS SIMPLE
-    ======================================================== */
+    /* =========================
+       MEDIA
+    ========================= */
 
-    function calculateSimpleInterest() {
+    function calcularMedia() {
 
-      const capital =
-        parseFloat(
-          document.getElementById("interestCapital").value
-        );
+        const texto =
+            document.getElementById(
+                "numerosMedia"
+            ).value;
 
-      const rate =
-        parseFloat(
-          document.getElementById("interestRate").value
-        );
+        const numeros =
+            texto
+                .split(",")
+                .map(x => parseFloat(x.trim()))
+                .filter(x => !isNaN(x));
 
-      const years =
-        parseFloat(
-          document.getElementById("interestYears").value
-        );
+        if (numeros.length === 0) {
 
-      if (
-        !Number.isFinite(capital) ||
-        !Number.isFinite(rate) ||
-        !Number.isFinite(years) ||
-        capital < 0 ||
-        rate < 0 ||
-        years < 0
-      ) {
+            document.getElementById(
+                "resultadoMedia"
+            ).textContent =
+                "Introduce números separados por comas.";
 
-        showResult(
-          "interestResult",
-          "Introduce valores válidos y positivos.",
-          true
-        );
+            return;
 
-        return;
-      }
+        }
 
-      const interest =
-        capital * (rate / 100) * years;
+        const suma =
+            numeros.reduce(
+                (a, b) => a + b,
+                0
+            );
 
-      const total =
-        capital + interest;
+        const media =
+            suma / numeros.length;
 
-      showResult(
-        "interestResult",
-        `Intereses: <strong>${formatNumber(interest)} €</strong><br>
-         Capital final: <strong>${formatNumber(total)} €</strong>`
-      );
+        document.getElementById(
+            "resultadoMedia"
+        ).textContent =
+            "Media: " +
+            formato(media);
 
     }
 
 
-    /* =======================================================
-       9. METABOLISMO BASAL - MIFflin-St Jeor
-    ======================================================== */
+    /* =========================
+       PRÉSTAMO
+    ========================= */
 
-    function calculateBMR() {
+    function calcularPrestamo() {
 
-      const age =
-        parseFloat(
-          document.getElementById("bmrAge").value
-        );
+        const capital = numero("capital");
+        const interes = numero("interes");
+        const años = numero("plazo");
 
-      const sex =
-        document.getElementById("bmrSex").value;
+        if (
+            isNaN(capital) ||
+            isNaN(interes) ||
+            isNaN(años) ||
+            capital <= 0 ||
+            años <= 0
+        ) {
 
-      const weight =
-        parseFloat(
-          document.getElementById("bmrWeight").value
-        );
+            document.getElementById(
+                "resultadoPrestamo"
+            ).textContent =
+                "Introduce valores válidos.";
 
-      const height =
-        parseFloat(
-          document.getElementById("bmrHeight").value
-        );
+            return;
 
-      if (
-        !Number.isFinite(age) ||
-        !Number.isFinite(weight) ||
-        !Number.isFinite(height) ||
-        age < 1 ||
-        age > 120 ||
-        weight <= 0 ||
-        height <= 0
-      ) {
+        }
 
-        showResult(
-          "bmrResult",
-          "Introduce una edad, un peso y una altura válidos.",
-          true
-        );
+        const meses =
+            años * 12;
 
-        return;
-      }
+        const tasa =
+            interes / 100 / 12;
 
-      let bmr;
+        let cuota;
 
-      /*
-        Fórmula de Mifflin-St Jeor:
+        if (tasa === 0) {
 
-        Hombre:
-        TMB = 10 × peso + 6.25 × altura - 5 × edad + 5
-
-        Mujer:
-        TMB = 10 × peso + 6.25 × altura - 5 × edad - 161
-      */
-
-      if (sex === "male") {
-
-        bmr =
-          (10 * weight) +
-          (6.25 * height) -
-          (5 * age) +
-          5;
-
-      } else {
-
-        bmr =
-          (10 * weight) +
-          (6.25 * height) -
-          (5 * age) -
-          161;
-
-      }
-
-      showResult(
-        "bmrResult",
-        `Tasa metabólica basal estimada:<br>
-         <strong>${formatNumber(bmr, 0)} kcal/día</strong><br><br>
-         Este resultado es una estimación orientativa y no representa por sí solo las necesidades energéticas diarias totales.`
-      );
-
-    }
-
-
-    /* =======================================================
-       BUSCADOR
-    ======================================================== */
-
-    function searchCalculators() {
-
-      const search =
-        document
-          .getElementById("searchInput")
-          .value
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .trim();
-
-      const cards =
-        document.querySelectorAll(".calculator-card");
-
-      const noResults =
-        document.getElementById("noResults");
-
-      let visibleCards = 0;
-
-      cards.forEach(card => {
-
-        const name =
-          (card.dataset.name || "")
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const title =
-          (card.querySelector("h3")?.textContent || "")
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const description =
-          (card.querySelector("p")?.textContent || "")
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const matches =
-          name.includes(search) ||
-          title.includes(search) ||
-          description.includes(search);
-
-        if (matches) {
-
-          card.style.display = "";
-
-          visibleCards++;
+            cuota =
+                capital / meses;
 
         } else {
 
-          card.style.display = "none";
+            cuota =
+                capital *
+                (
+                    tasa *
+                    Math.pow(
+                        1 + tasa,
+                        meses
+                    )
+                ) /
+                (
+                    Math.pow(
+                        1 + tasa,
+                        meses
+                    ) - 1
+                );
 
         }
 
-      });
+        const total =
+            cuota * meses;
 
-      noResults.style.display =
-        visibleCards === 0
-          ? "block"
-          : "none";
-
-    }
-
-
-    /* =======================================================
-       MODO OSCURO
-    ======================================================== */
-
-    function updateThemeButton() {
-
-      const button =
-        document.getElementById("themeButton");
-
-      const dark =
-        document.body.classList.contains("dark");
-
-      button.textContent =
-        dark ? "☀️" : "🌙";
-
-      button.setAttribute(
-        "aria-label",
-        dark
-          ? "Activar modo claro"
-          : "Activar modo oscuro"
-      );
-
-      button.setAttribute(
-        "title",
-        dark
-          ? "Cambiar a modo claro"
-          : "Cambiar a modo oscuro"
-      );
+        document.getElementById(
+            "resultadoPrestamo"
+        ).innerHTML =
+            "Cuota mensual aproximada: " +
+            formato(cuota) +
+            " €<br>Total aproximado: " +
+            formato(total) +
+            " €";
 
     }
 
 
-    function toggleDarkMode() {
+    /* =========================
+       IMC
+    ========================= */
 
-      document.body.classList.toggle("dark");
+    function calcularIMC() {
 
-      const dark =
-        document.body.classList.contains("dark");
-
-      localStorage.setItem(
-        "darkMode",
-        dark ? "true" : "false"
-      );
-
-      updateThemeButton();
-
-    }
-
-
-    /* =======================================================
-       INICIALIZACIÓN
-    ======================================================== */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function () {
+        const peso = numero("peso");
+        const alturaCM = numero("altura");
 
         if (
-          localStorage.getItem("darkMode") === "true"
+            isNaN(peso) ||
+            isNaN(alturaCM) ||
+            peso <= 0 ||
+            alturaCM <= 0
         ) {
 
-          document.body.classList.add("dark");
+            document.getElementById(
+                "resultadoIMC"
+            ).textContent =
+                "Introduce valores válidos.";
+
+            return;
 
         }
 
-        updateThemeButton();
+        const altura =
+            alturaCM / 100;
 
-        /*
-          Evitamos seleccionar accidentalmente
-          una fecha futura en la calculadora de edad.
-        */
+        const imc =
+            peso /
+            Math.pow(
+                altura,
+                2
+            );
 
-        const birthDate =
-          document.getElementById("birthDate");
+        document.getElementById(
+            "resultadoIMC"
+        ).textContent =
+            "IMC: " +
+            formato(imc);
 
-        if (birthDate) {
+    }
 
-          const today =
-            new Date();
 
-          const year =
-            today.getFullYear();
+    /* =========================
+       CONVERSOR
+    ========================= */
 
-          const month =
-            String(today.getMonth() + 1)
-              .padStart(2, "0");
+    function convertirDistancia() {
 
-          const day =
-            String(today.getDate())
-              .padStart(2, "0");
+        const distancia =
+            numero("distancia");
 
-          birthDate.max =
-            `${year}-${month}-${day}`;
+        const unidad =
+            document.getElementById(
+                "unidad"
+            ).value;
+
+        if (
+            isNaN(distancia)
+        ) {
+
+            document.getElementById(
+                "resultadoDistancia"
+            ).textContent =
+                "Introduce una distancia válida.";
+
+            return;
 
         }
 
-      }
+        if (unidad === "km") {
+
+            const millas =
+                distancia * 0.621371;
+
+            document.getElementById(
+                "resultadoDistancia"
+            ).textContent =
+                formato(distancia) +
+                " km = " +
+                formato(millas) +
+                " millas";
+
+        } else {
+
+            const km =
+                distancia * 1.609344;
+
+            document.getElementById(
+                "resultadoDistancia"
+            ).textContent =
+                formato(distancia) +
+                " millas = " +
+                formato(km) +
+                " km";
+
+        }
+
+    }
+
+
+    /* =========================
+       BUSCADOR
+    ========================= */
+
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            const texto =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+            const calculators =
+                document.querySelectorAll(
+                    ".calculator"
+                );
+
+            calculators.forEach(
+                function (calculator) {
+
+                    const contenido =
+                        calculator.textContent
+                            .toLowerCase();
+
+                    if (
+                        contenido.includes(texto)
+                    ) {
+
+                        calculator.style.display =
+                            "";
+
+                    } else {
+
+                        calculator.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
     );
 
-  </script>
+</script>
 
 </body>
 </html>
